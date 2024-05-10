@@ -1,17 +1,22 @@
 import { component$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import {
+  routeLoader$,
+  type DocumentHead,
+  server$,
+} from "@builder.io/qwik-city";
+
+export const logServer$ = server$(() => {
+  return console.log("I am server$");
+});
+
+export const useLogLoader = routeLoader$(async () => {
+  return console.log("I am loader");
+});
 
 export default component$(() => {
-  return (
-    <>
-      <h1>Hi 👋</h1>
-      <div>
-        Can't wait to see what you build with qwik!
-        <br />
-        Happy coding.
-      </div>
-    </>
-  );
+  console.log("I am jsx on a route");
+
+  return <></>;
 });
 
 export const head: DocumentHead = {
